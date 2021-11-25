@@ -1,6 +1,7 @@
 // Import vue component
 import XoneButton from "./xone-button/index"
 import XoneSelect from "./xone-select/index"
+import Toast from "./xone-toast/index"
 
 
 // Declare install function executed by Vue.use()
@@ -24,6 +25,7 @@ const install = function(Vue) {
   components.forEach(component => {
     Vue.component(component.name, component)
   })
+  Vue.prototype.$toast = Toast;
 }
 
 if (typeof window !== "undefined" && window.Vue) {
@@ -42,11 +44,12 @@ if (GlobalVue) {
 } */
 
 // To allow use as module (npm/webpack/etc.) export component
-export default { install, XoneButton, XoneSelect }
+export default { install, XoneButton, XoneSelect, Toast }
 export  {
   install,
   XoneButton,
-  XoneSelect
+  XoneSelect,
+  Toast
 }
 // It's possible to expose named exports when writing components that can
 // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';

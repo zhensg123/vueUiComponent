@@ -22,15 +22,24 @@ module.exports = {
     module: {
         rules: [
             {
-              test: /\.vue$/,
-              use:  ['vue-loader']
+                test: /\.vue$/,
+                use: ['vue-loader']
             },
             {
-              test: /\.js$/,
-              loader: 'babel-loader',
-              exclude: /node_modules/,
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
             }
-        ]},
+        ]
+    },
     plugins: [
         new VueLoaderPlugin()
     ]
