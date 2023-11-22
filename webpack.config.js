@@ -1,4 +1,6 @@
 //webpack.config.js
+const htmlWebpackPlugin = require('html-webpack-plugin')
+
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 module.exports = {
@@ -19,6 +21,12 @@ module.exports = {
             amd: "vue"   //类似于 commonjs，但使用 AMD 模块系统
         }
     },
+    devServer: {
+        host: 'localhost',
+        port: "8888",
+        open: true,
+        hot: true
+      },
     module: {
         rules: [
             {
@@ -41,6 +49,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new htmlWebpackPlugin({
+            template: './index.html',
+            filename: './index.html',
+            inject: true
+          })
     ]
 }
