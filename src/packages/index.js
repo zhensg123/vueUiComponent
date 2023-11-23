@@ -1,8 +1,10 @@
 // Import vue component
-import XoneButton from "./xone-button/index"
-import XoneSelect from "./xone-select/index"
-import Toast from "./xone-toast/index"
+import UnitButton from "./unit-button/index";
+import UnitAlert from "./unit-alert/index";
+import UnitLink from "./unit-link/index";
 
+// import XoneSelect from "./xone-select/index"
+import Toast from "./xone-toast/index";
 
 // Declare install function executed by Vue.use()
 /* export function install(Vue) {
@@ -15,21 +17,18 @@ import Toast from "./xone-toast/index"
 const plugin = {
   install
 } */
-const components = [
-  XoneButton,
-  XoneSelect
-]
+const components = [UnitButton, UnitAlert, UnitLink];
 
 // will install the plugin only once
-const install = function(Vue) {
-  components.forEach(component => {
-    Vue.component(component.name, component)
-  })
+const install = function (Vue) {
+  components.forEach((component) => {
+    Vue.component(component.name, component);
+  });
   Vue.prototype.$toast = Toast;
-}
+};
 
 if (typeof window !== "undefined" && window.Vue) {
-  install(window.Vue)
+  install(window.Vue);
 }
 
 // Auto-install when vue is found (eg. in browser via <script> tag)
@@ -44,13 +43,18 @@ if (GlobalVue) {
 } */
 
 // To allow use as module (npm/webpack/etc.) export component
-export default { install, XoneButton, XoneSelect, Toast }
-export  {
-  install,
-  XoneButton,
-  XoneSelect,
-  Toast
-}
+export default { install, 
+  UnitButton, 
+  UnitAlert,
+  UnitLink, 
+  Toast 
+};
+export { install, 
+  UnitButton, 
+  UnitAlert, 
+  UnitLink, 
+  Toast 
+};
 // It's possible to expose named exports when writing components that can
 // also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
 // export const RollupDemoDirective = component;
