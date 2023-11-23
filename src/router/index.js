@@ -1,33 +1,48 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import Button from "../views/Button.vue";
-import Alert from "../views/Alert.vue";
-import Link from "../views/Link.vue";
+// import Button from "../views/Button.vue";
+// import Alert from "../views/Alert.vue";
+// import Link from "../views/Link.vue";
+// import Progress from "../views/Progress.vue";
+// import Avatar from "../views/Avatar.vue";
+// import Aside from "../views/Aside.vue";
+// import Badge from "../views/Badge.vue";
+// import Card from "../views/Card.vue";
+// import Container from "../views/Container.vue";
+// import Divider from "../views/Divider.vue";
+// import Footer from "../views/Footer.vue";
+// import Header from "../views/Header.vue";
+// import Icon from "../views/Icon.vue";
+// import Main from "../views/Main.vue";
+// import Spinner from "../views/Spinner.vue";
+// import Tag from "../views/Tag.vue";
+const files = require.context('../views/simple', false, /\.vue$/)
+const simpleComRoutes = []
+files
+  .keys()
+  .forEach(path => {
 
+    const module = files(path)
+    /**
+     * 兼容 import export 和 require module.export 两种规范
+     */
+    const component = module.default || module
+    simpleComRoutes.push({
+      path: `/${path.slice(2, path.length - 4)}`,
+      component,
+      meta: { title: path.slice(2, path.length - 4), type:'simple', icon: "el-icon-s-tools" },
+    })
+  })
 Vue.use(Router);
 
 export const routes = [
   {
     path: "/",
-    redirect: "/button",
+    redirect: "/Alert",
     hidden: true,
   },
-  {
-    path: "/button",
-    component: Button,
-    meta: { title: "Button", icon: "el-icon-s-tools" },
-  },
-  {
-    path: "/alert",
-    component: Alert,
-    meta: { title: "Alert", icon: "el-icon-s-tools" },
-  },
-  {
-    path: "/link",
-    component: Link,
-    meta: { title: "Link", icon: "el-icon-s-tools" },
-  },
+  ...simpleComRoutes,
   { path: "*", redirect: "/404", hidden: true },
 ];
 
