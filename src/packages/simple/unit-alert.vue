@@ -111,6 +111,12 @@ export default {
       return this.description || this.$slots.default ? "is-bold" : "";
     },
   },
+  created() {
+    console.log(this.$attrs['my-attr'], this.$attrs, 'dedede'); // 输出：hello
+  },
+  mounted() {
+    console.log(this.$props, this.$el.className, this.$el.style.width, 'dedede'); // 输出：hello
+  },
 };
 </script>
 <style scoped>

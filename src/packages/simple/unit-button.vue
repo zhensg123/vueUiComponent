@@ -76,6 +76,9 @@ export default {
       this.$emit("click", evt);
     },
   },
+  mounted() {
+    console.log(this.$options.propsData, '22222')
+  },
 };
 </script>
 <style scoped>

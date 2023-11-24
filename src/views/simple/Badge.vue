@@ -1,6 +1,6 @@
 <template>
     <div>
-        <unit-badge :value="12" class="item">
+        <unit-badge isDot :value="12" class="item">
   <unit-button size="small">评论</unit-button>
 </unit-badge>
 <unit-badge :value="3" class="item">
