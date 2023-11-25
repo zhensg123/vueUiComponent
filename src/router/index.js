@@ -17,13 +17,13 @@ import Router from "vue-router";
 // import Main from "../views/Main.vue";
 // import Spinner from "../views/Spinner.vue";
 // import Tag from "../views/Tag.vue";
-const files = require.context('../views/simple', false, /\.vue$/)
+const simpleFiles = require.context('../views/simple', false, /\.vue$/)
 const simpleComRoutes = []
-files
+simpleFiles
   .keys()
   .forEach(path => {
 
-    const module = files(path)
+    const module = simpleFiles(path)
     /**
      * 兼容 import export 和 require module.export 两种规范
      */

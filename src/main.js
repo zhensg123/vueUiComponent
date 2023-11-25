@@ -3,8 +3,9 @@ import Vue from "vue";
 import App from './App.vue'
 import router from './router'
 import './packages'
-
-// Vue.use(unitUi)
+import {codemirror} from 'vue-codemirror'
+import 'codemirror/lib/codemirror.css'
+Vue.use(codemirror)
 
 new Vue({
     el: '#app',
