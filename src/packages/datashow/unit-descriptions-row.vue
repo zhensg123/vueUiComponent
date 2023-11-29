@@ -8,18 +8,18 @@ export default {
   },
   inject: ['UnitDescriptions'],
   render(h) {
-    const { elDescriptions } = this;
+    const { UnitDescriptions } = this;
     const row = (this.row || []).map(item => {
       return {
         ...item,
         label: item.slots.label || item.props.label,
         ...['labelClassName', 'contentClassName', 'labelStyle', 'contentStyle'].reduce((res, key) => {
-          res[key] = item.props[key] || elDescriptions[key];
+          res[key] = item.props[key] || UnitDescriptions[key];
           return res;
         }, {})
       };
     });
-    if (elDescriptions.direction === 'vertical') {
+    if (UnitDescriptions.direction === 'vertical') {
       return (
         <tbody>
           <tr class="el-descriptions-row">
@@ -30,8 +30,8 @@ export default {
                     class={{
                       'el-descriptions-item__cell': true,
                       'el-descriptions-item__label': true,
-                      'has-colon': elDescriptions.border ? false : elDescriptions.colon,
-                      'is-bordered-label': elDescriptions.border,
+                      'has-colon': UnitDescriptions.border ? false : UnitDescriptions.colon,
+                      'is-bordered-label': UnitDescriptions.border,
                       [item.labelClassName]: true
                     }}
                     style={item.labelStyle}
@@ -57,7 +57,7 @@ export default {
         </tbody>
       );
     }
-    if (elDescriptions.border) {
+    if (UnitDescriptions.border) {
       return (
         <tbody>
           <tr class="el-descriptions-row">
@@ -68,7 +68,7 @@ export default {
                     class={{
                       'el-descriptions-item__cell': true,
                       'el-descriptions-item__label': true,
-                      'is-bordered-label': elDescriptions.border,
+                      'is-bordered-label': UnitDescriptions.border,
                       [item.labelClassName]: true
                     }}
                     style={item.labelStyle}
@@ -97,7 +97,7 @@ export default {
                     <span
                       class={{
                         'el-descriptions-item__label': true,
-                        'has-colon': elDescriptions.colon,
+                        'has-colon': UnitDescriptions.colon,
                         [item.labelClassName]: true
                       }}
                       style={item.labelStyle}
@@ -115,5 +115,4 @@ export default {
     );
   }
 };
-
 </script>

@@ -127,6 +127,7 @@
         this.disposeValue = result;
         return result;
       },
+      // 相差时间
       diffDate(minuend, subtrahend) {
         return Math.max(minuend - subtrahend, 0);
       },
@@ -185,6 +186,7 @@
         }
         return result;
       },
+      // 倒计时
       countDown(timeVlaue) {
         let {REFRESH_INTERVAL, timeTask, diffDate, formatTimeStr, stopTime, suspend } = this;
         if (timeTask) return;
@@ -194,6 +196,7 @@
           than.disposeValue = formatTimeStr(diffTiem);
           stopTime(diffTiem);
         }, REFRESH_INTERVAL);
+        // 销毁定时器
         this.$once('hook:beforeDestroy', () => {
           suspend(true);
         });

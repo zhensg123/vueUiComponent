@@ -43,7 +43,7 @@
     export default {
       name: 'UnitTimelineItem',
   
-      inject: ['UnitTimeline'],
+      inject: ['timeline'],
   
       props: {
         timestamp: String,
