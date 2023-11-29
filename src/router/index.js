@@ -34,6 +34,25 @@ simpleFiles
       meta: { title: path.slice(2, path.length - 4), type:'simple', icon: "el-icon-s-tools" },
     })
   })
+
+
+  const normalFiles = require.context('../views/normal', false, /\.vue$/)
+const normalComRoutes = []
+normalFiles
+  .keys()
+  .forEach(path => {
+
+    const module = normalFiles(path)
+    /**
+     * 兼容 import export 和 require module.export 两种规范
+     */
+    const component = module.default || module
+    normalComRoutes.push({
+      path: `/${path.slice(2, path.length - 4)}`,
+      component,
+      meta: { title: path.slice(2, path.length - 4), type:'normal', icon: "el-icon-s-tools" },
+    })
+  })
 Vue.use(Router);
 
 export const routes = [
@@ -43,6 +62,7 @@ export const routes = [
     hidden: true,
   },
   ...simpleComRoutes,
+  ...normalComRoutes,
   { path: "*", redirect: "/404", hidden: true },
 ];
 

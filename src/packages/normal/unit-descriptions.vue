@@ -1,11 +1,11 @@
 <script>
-import DescriptionsRow from './unit-descriptions-row';
+import UnitDescriptionsRow from './unit-descriptions-row.vue';
 import { isFunction } from '../utils/types';
 
 export default {
   name: 'UnitDescriptions',
   components: {
-    [DescriptionsRow.name]: DescriptionsRow
+    [UnitDescriptionsRow.name]: UnitDescriptionsRow
   },
   props: {
     border: {
@@ -58,7 +58,7 @@ export default {
   },
   provide() {
     return {
-      elDescriptions: this
+      UnitDescriptions: this
     };
   },
   methods: {
@@ -114,7 +114,7 @@ export default {
     },
     getRows() {
       const children = ((this.$slots.default || []).filter(vnode => vnode.tag &&
-            vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'ElDescriptionsItem'));
+            vnode.componentOptions && vnode.componentOptions.Ctor.options.name === 'UnitDescriptionsItem'));
       const nodes = children.map(vnode => {
         return {
           props: this.getOptionProps(vnode),
@@ -171,7 +171,7 @@ export default {
         <div class="el-descriptions__body">
           <table class={['el-descriptions__table', {'is-bordered': border}, descriptionsSize ? `el-descriptions--${descriptionsSize}` : '']}>
             {rows.map(row => (
-              <DescriptionsRow row={row}></DescriptionsRow>
+              <UnitDescriptionsRow row={row}></UnitDescriptionsRow>
             ))}
           </table>
         </div>

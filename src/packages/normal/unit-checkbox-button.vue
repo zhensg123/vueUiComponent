@@ -44,7 +44,7 @@
     </label>
   </template>
   <script>
-    import Emitter from '.../mixins/emitter';
+    import Emitter from '../mixins/emitter';
   
     export default {
       name: 'UnitCheckboxButton',
