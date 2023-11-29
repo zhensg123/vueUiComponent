@@ -26,7 +26,7 @@
   </template>
   
   <script>
-  import { isNumber, chain, multiply, padStart, reduce} from '../util/lodash';
+  import { isNumber, chain, multiply, padStart, reduce} from '../utils/lodash';
   export default {
     name: 'UnitStatistic',
     data() {

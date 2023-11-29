@@ -16,7 +16,7 @@
   </template>
   
   <script>
-  import throttle from '../util/throttle';
+  import throttle from '../utils/throttle';
   
   const cubic = value => Math.pow(value, 3);
   const easeInOutCubic = value => value < 0.5
