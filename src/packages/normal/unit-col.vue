@@ -23,6 +23,7 @@ export default {
     },
   
     computed: {
+      // 说明el-col是可以单独用的，只不过这个时候的gutter是0
       gutter() {
         let parent = this.$parent;
         while (parent && parent.$options.componentName !== 'ElRow') {
@@ -49,7 +50,7 @@ export default {
           );
         }
       });
-  
+      
       ['xs', 'sm', 'md', 'lg', 'xl'].forEach(size => {
         if (typeof this[size] === 'number') {
           classList.push(`el-col-${size}-${this[size]}`);
@@ -68,6 +69,7 @@ export default {
       return h(this.tag, {
         class: ['el-col', classList],
         style
+        // 相当于slot
       }, this.$slots.default);
     }
   };
