@@ -57,7 +57,7 @@ Vue.use(Router);
 export const routes = [
   {
     path: "/",
-    redirect: "/Alert",
+    redirect: "/Divider",
     hidden: true,
   },
   ...assistComRoutes,
