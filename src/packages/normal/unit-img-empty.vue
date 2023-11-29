@@ -120,6 +120,7 @@
   </template>
   
   <script>
+  // empty竟然是一个svg绘制的
   let id = 0;
   export default {
     name: 'UnitImgEmpty',

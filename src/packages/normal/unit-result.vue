@@ -21,6 +21,7 @@
     </div>
   </template>
   <script>
+  // 主要利用了动态组件
   import IconSuccess from '../common/icon-success.vue';
   import IconError from '../common/icon-error.vue';
   import IconWarning from '../common/icon-warning.vue';
