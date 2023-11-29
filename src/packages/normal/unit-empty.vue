@@ -17,7 +17,7 @@
   </template>
   
   <script>
-  import ImgEmpty from './img-empty.vue';
+  import ImgEmpty from './unit-img-empty.vue';
 //   import { t } from 'element-ui/src/locale';
   
   export default {

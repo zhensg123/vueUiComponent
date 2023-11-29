@@ -34,7 +34,7 @@
   };
   
   export default {
-    name: 'ElResult',
+    name: 'UnitResult',
     components: {
       [IconSuccess.name]: IconSuccess,
       [IconError.name]: IconError,
