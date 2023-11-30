@@ -15,7 +15,6 @@
     </div>
 </template>
 <script>
-import alert from '../../packages/simple/unit-alert.vue'
 export default {
     
 }

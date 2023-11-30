@@ -121,6 +121,10 @@ a.router-link-exact-active{
         height: 36px;
       font-size: 28px;
     }
+
+    h3:nth-of-type(n + 2) {
+      margin-top: 15px;
+    }
     .menu-url {
       height: 36px;
       line-height: 36px;

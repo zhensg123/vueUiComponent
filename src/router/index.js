@@ -17,41 +17,60 @@ import Router from "vue-router";
 // import Main from "../views/Main.vue";
 // import Spinner from "../views/Spinner.vue";
 // import Tag from "../views/Tag.vue";
+
+
 const assistFiles = require.context('../views/assist', false, /\.vue$/)
-const assistComRoutes = []
-assistFiles
-  .keys()
-  .forEach(path => {
 
-    const module = assistFiles(path)
-    /**
-     * 兼容 import export 和 require module.export 两种规范
-     */
-    const component = module.default || module
-    assistComRoutes.push({
-      path: `/${path.slice(2, path.length - 4)}`,
-      component,
-      meta: { title: path.slice(2, path.length - 4), type:'辅助', icon: "el-icon-s-tools" },
+const assistComRoutes = generateRoutes(assistFiles, '辅助组件')
+
+const datashowFiles = require.context('../views/datashow', false, /\.vue$/)
+
+const datashowComRoutes = generateRoutes(datashowFiles, '数据展示')
+
+
+const formFiles = require.context('../views/form', false, /\.vue$/)
+
+const formComRoutes = generateRoutes(formFiles, '数据展示')
+
+const interactiveFiles = require.context('../views/interactive', false, /\.vue$/)
+
+const interactiveComRoutes = generateRoutes(interactiveFiles, '交互组件')
+
+const layoutFiles = require.context('../views/layout', false, /\.vue$/)
+
+const layoutComRoutes = generateRoutes(layoutFiles, '布局组件')
+
+const navigationFiles = require.context('../views/navigation', false, /\.vue$/)
+
+const navigationComRoutes = generateRoutes(navigationFiles, '导航组件')
+
+
+const noticeFiles = require.context('../views/notice', false, /\.vue$/)
+
+const noticeComRoutes = generateRoutes(noticeFiles, '通知组件')
+
+
+
+  function generateRoutes(files, type) {
+  const routes = []
+  files
+    .keys()
+    .forEach(path => {
+  
+      const module = files(path)
+      /**
+       * 兼容 import export 和 require module.export 两种规范
+       */
+      const component = module.default || module
+      routes.push({
+        path: `/${path.slice(2, path.length - 4)}`,
+        component,
+        meta: { title: path.slice(2, path.length - 4), type: type, icon: "el-icon-s-tools" },
+      })
     })
-  })
-
-  const datashowFiles = require.context('../views/datashow', false, /\.vue$/)
-const datashowComRoutes = []
-datashowFiles
-  .keys()
-  .forEach(path => {
-
-    const module = datashowFiles(path)
-    /**
-     * 兼容 import export 和 require module.export 两种规范
-     */
-    const component = module.default || module
-    datashowComRoutes.push({
-      path: `/${path.slice(2, path.length - 4)}`,
-      component,
-      meta: { title: path.slice(2, path.length - 4), type:'数据展示', icon: "el-icon-s-tools" },
-    })
-  })
+  
+    return routes
+  }
 Vue.use(Router);
 
 export const routes = [
@@ -62,6 +81,11 @@ export const routes = [
   },
   ...assistComRoutes,
   ...datashowComRoutes,
+  ...formComRoutes,
+  ...interactiveComRoutes,
+ ...layoutComRoutes,
+ ...navigationComRoutes,
+ ...noticeComRoutes,
   { path: "*", redirect: "/404", hidden: true },
 ];
 
