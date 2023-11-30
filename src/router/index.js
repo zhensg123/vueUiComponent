@@ -30,7 +30,7 @@ const datashowComRoutes = generateRoutes(datashowFiles, '数据展示')
 
 const formFiles = require.context('../views/form', false, /\.vue$/)
 
-const formComRoutes = generateRoutes(formFiles, '数据展示')
+const formComRoutes = generateRoutes(formFiles, '表单组件')
 
 const interactiveFiles = require.context('../views/interactive', false, /\.vue$/)
 
